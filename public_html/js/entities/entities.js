@@ -18,6 +18,7 @@ game.PlayerEntity = me.Entity.extend({
        this.renderable.setCurrentAnimation("idle");
        
        this.body.setVelocity(5, 20);
+       me.game.viewport.follow(this.pos, me.game.viewport.AXIS.BOTH);
    },
     
     update: function(delta){
@@ -45,11 +46,36 @@ game.PlayerEntity = me.Entity.extend({
         return true;
     },
     
+    
+    if (me.input.isKeyPressed('jump')){
+            // make sure we are not already jumping or falling
+            if (!this.body.jumping && !this.body.falling) {
+                // set current vel to the maximum defined value
+                // gravity will then do the rest
+                this.body.vel.y = -this.body.maxVel.y * me.timer.tick;
+                // set the jumping flag
+                this.body.jumping = true;
+            }
+ 
+        }
+ 
+        // apply physics to the body (this moves the entity)
+        this.body.update(delta);
+ 
+        // handle collisions against other shapes
+        me.collision.check(this);
+        
+    
     collideHandler: function(response){
         
     }
     
 });
+
+
+
+
+
 
 game.LevelTrigger = me.Entity.extend({
   init: function(x, y, settings){
@@ -61,5 +87,6 @@ game.LevelTrigger = me.Entity.extend({
     onCollision: function(){
         this.body.setCollisionMask(me.collision.types.NO_OBJECT);
         me.levelDirector.loadLevel(this.level);
+        me.state.current().resetPlayer();
     }
 });
