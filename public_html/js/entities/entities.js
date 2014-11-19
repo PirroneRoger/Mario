@@ -8,7 +8,7 @@ game.PlayerEntity = me.Entity.extend({
                width: 128,
                height: 128,
                getShape: function(){
-                   return (new me.Rect(0, 0, 128, 128)).toPolygon();
+                   return (new me.Rect(0, 0, 3, 128)).toPolygon();
                }
        }]);
    
@@ -41,13 +41,27 @@ game.PlayerEntity = me.Entity.extend({
             this.renderable.setCurrentAnimation("idle");
         }
         
+        if(me.input.isKeyPressed("left")) {
+            this.flipX(true);
+            this.body.vel.x -= this.body.accel.x * me.timer.tick;
+        }else{
+            this.body.vel.x = 0;
+        }
         
-        this._super(me.Entity, "update", [delta]);
-        return true;
-    },
+        this.body.update(delta);
+        me.collision.check(this, true, this.collideHandler.bind(this), true);
+        
+        if(this.body.vel.x !== 0){
+            if(!this.renderable.isCurrentAnimation("smallWalk")) {
+                this.renderable.setCurrentAnimation("smallWalk");
+                this.renderable.setAnimationFrame();
+            }
+        }else{
+            this.renderable.setCurrentAnimation("idle");
+        }
+            
     
-    
-    if (me.input.isKeyPressed('jump')){
+        if (me.input.isKeyPressed('up')){
             // make sure we are not already jumping or falling
             if (!this.body.jumping && !this.body.falling) {
                 // set current vel to the maximum defined value
@@ -59,12 +73,15 @@ game.PlayerEntity = me.Entity.extend({
  
         }
  
+        this._super(me.Entity, "update", [delta]);
+        return true;
+ 
         // apply physics to the body (this moves the entity)
-        this.body.update(delta);
+        //this.body.update(delta);
  
         // handle collisions against other shapes
-        me.collision.check(this);
-        
+        //me.collision.check(this);
+      },   
     
     collideHandler: function(response){
         
