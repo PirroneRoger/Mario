@@ -8,7 +8,7 @@ game.PlayerEntity = me.Entity.extend({
                width: 128,
                height: 128,
                getShape: function(){
-                   return (new me.Rect(0, 0, 3, 128)).toPolygon();
+                   return (new me.Rect(0, 0, 0, 128)).toPolygon();
                }
        }]);
    
@@ -23,8 +23,12 @@ game.PlayerEntity = me.Entity.extend({
     
     update: function(delta){
         if(me.input.isKeyPressed("right")) {
+            this.flipX(false);
             this.body.vel.x += this.body.accel.x * me.timer.tick;
             
+        }else if(me.input.isKeyPressed("left")) {
+            this.flipX(true);
+            this.body.vel.x -= this.body.accel.x * me.timer.tick;
         }else{
             this.body.vel.x = 0;
         }
@@ -40,16 +44,6 @@ game.PlayerEntity = me.Entity.extend({
         }else{
             this.renderable.setCurrentAnimation("idle");
         }
-        
-        if(me.input.isKeyPressed("left")) {
-            this.flipX(true);
-            this.body.vel.x -= this.body.accel.x * me.timer.tick;
-        }else{
-            this.body.vel.x = 0;
-        }
-        
-        this.body.update(delta);
-        me.collision.check(this, true, this.collideHandler.bind(this), true);
         
         if(this.body.vel.x !== 0){
             if(!this.renderable.isCurrentAnimation("smallWalk")) {
@@ -99,11 +93,13 @@ game.LevelTrigger = me.Entity.extend({
       this._super(me.Entity, 'init', [x, y, settings]);
       this.body.onCollision = this.onCollision.bind(this);
       this.level = settings.level;
+      this.xSpawn = settings.xSpawn;
+      this.ySpawn = settings.ySpawn;
   },
     
     onCollision: function(){
         this.body.setCollisionMask(me.collision.types.NO_OBJECT);
         me.levelDirector.loadLevel(this.level);
-        me.state.current().resetPlayer();
+        me.state.current().resetPlayer(this.xSpawn, this.ySpawn);
     }
 });
