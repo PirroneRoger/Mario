@@ -30,6 +30,6 @@ game.PlayScreen = me.ScreenObject.extend({
         
         resetPlayer: function(x, y){
             var player = me.pool.pull("mario", 0, 400, {});
-            me.game.world.addChild(player, 3);
+            me.game.world.addChild(player, 4);
         }
 });
