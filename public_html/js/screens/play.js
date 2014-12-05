@@ -1,15 +1,15 @@
 game.PlayScreen = me.ScreenObject.extend({
-	/**
-	 *  action to perform on state change
-	 */
+	
 	onResetEvent: function() {
 		// reset the score
 		game.data.score = 0;
                 console.log("Play");
                 me.levelDirector.loadLevel("RogerLevel01");
-                
+                //x,y where they mario resets
                 this.resetPlayer(0, 400);
                 
+                
+                //all direcitons for arrow keys
                 me.input.bindKey(me.input.KEY.RIGHT, "right");
                 me.input.bindKey(me.input.KEY.UP, "up");
                 me.input.bindKey(me.input.KEY.LEFT, "left");

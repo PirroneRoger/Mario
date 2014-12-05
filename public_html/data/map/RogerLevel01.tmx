@@ -54,8 +54,12 @@
   </data>
  </layer>
  <objectgroup name="EnemyEntities">
-  <object name="BadGuy" x="353.333" y="488" width="272" height="68"/>
-  <object name="BadGuy" x="417.333" y="280" width="72" height="65.3333"/>
-  <object name="BadGuy" x="137.333" y="69.3333" width="69.3333" height="66.6667"/>
+  <object name="BadGuy" x="282.666" y="488" width="342.667" height="74.6667"/>
+  <object name="BadGuy" x="429.333" y="282.667" width="72" height="65.3333"/>
+  <object name="BadGuy" x="148" y="444" width="69.3333" height="66.6667"/>
+  <object name="BadGUy" x="916" y="490.667" width="69.3333" height="64"/>
+ </objectgroup>
+ <objectgroup name="CollectableEntities">
+  <object name="Mushroom" x="281.333" y="496" width="65.3333" height="62.6667"/>
  </objectgroup>
 </map>
