@@ -93,7 +93,7 @@
                 response.b.alive = false;
             }else{
                 if(this.big){
-                    
+                    //if mario hits a bad guy he will jump a little bit.
                     this.big = false;
                     this.body.vel.y -= this.body.accel.y * me.timer.tick;
                     this.jumping = true;
@@ -113,7 +113,7 @@
     }
 });
 
-
+//spawning code
 game.LevelTrigger = me.Entity.extend({
   init: function(x, y, settings){
       this._super(me.Entity, 'init', [x, y, settings]);
@@ -161,7 +161,7 @@ game.BadGuy = me.Entity.extend({
        //starts the animation for the bad guy.
        this.renderable.addAnimation("run", [0, 1, 2], 80);
        //sets speed
-       this.body.setVelocity(4, 6);
+       this.body.setVelocity(50, .1);
    
     },
     //this code sets mario walking to the left and right.
@@ -196,7 +196,7 @@ game.BadGuy = me.Entity.extend({
 });
 
 
-
+//code for the mushroom and it's respective demensions.
 game.Mushroom = me.Entity.extend({
     init: function(x, y, settings) {
         this._super(me.Entity, 'init', [x, y, {
@@ -215,6 +215,3 @@ game.Mushroom = me.Entity.extend({
     }
 
 });
-
-//PussySlayer69
-//Pussy has been slain

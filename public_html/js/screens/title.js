@@ -16,8 +16,9 @@
                     },
                     
                     draw: function(renderer){
-                        //what we ee when we start the game
+                        //what we see when we start the game
                         this.font.draw(renderer.getContext(), "Crap-ario Game", 450, 130);
+                        this.font.draw(renderer.getContext(), "Survive and get to the end!", 350, 330);
                         this.font.draw(renderer.getContext(), "Press ENTER to play!", 250, 530);
                     }
                     
