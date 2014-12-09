@@ -1,5 +1,6 @@
    game.PlayerEntity = me.Entity.extend({
    init: function(x, y, settings){
+       //all of marios png info.
        this._super(me.Entity, 'init', [x, y, {
                image: "mario",
                spritewidth: "128",
@@ -11,6 +12,7 @@
                }
        }]);
    
+       //calls upon each image to make animation work.
        this.renderable.addAnimation("idle", [3]);
        this.renderable.addAnimation("bigIdle", [19]);
        this.renderable.addAnimation("smallWalk", [8, 9, 10, 11, 12, 13], 80);
@@ -54,6 +56,7 @@
             //This code sets mario's idle position.
             this.renderable.setCurrentAnimation("idle");
         
+        //animation code for the bigwalk 
     }else{
         if(this.body.vel.x !== 0){
             if(!this.renderable.isCurrentAnimation("bigWalk") && !this.renderable.isCurrentAnimation("grow") && !this.renderable.isCurrentAnimation("shrink")) {
@@ -83,7 +86,6 @@
     
     collideHandler: function(response){
         var ydif = this.pos.y - response.b.pos.y;
-        console.log(ydif);
         
         //This code is to make mario jump on the badguy and the badguy dies.
         if(response.b.type === 'badguy'){
@@ -91,6 +93,7 @@
                 response.b.alive = false;
             }else{
                 if(this.big){
+                    
                     this.big = false;
                     this.body.vel.y -= this.body.accel.y * me.timer.tick;
                     this.jumping = true;
@@ -100,7 +103,8 @@
                 //if mario hits a bad guy then it goes back to the menu.
                     me.state.change(me.state.MENU);
                  }
-            }    
+            }
+            //animation stuff for the mushroom
         }else if(response.b.type === 'mushroom'){
             this.renderable.setCurrentAnimation("grow", "bigIdle");
             this.big = true;
@@ -118,7 +122,7 @@ game.LevelTrigger = me.Entity.extend({
       this.xSpawn = settings.xSpawn;
       this.ySpawn = settings.ySpawn;
   },
-    
+    //collision code for levels
     onCollision: function(){
         this.body.setCollisionMask(me.collision.types.NO_OBJECT);
         me.levelDirector.loadLevel(this.level);
@@ -211,3 +215,6 @@ game.Mushroom = me.Entity.extend({
     }
 
 });
+
+//PussySlayer69
+//Pussy has been slain

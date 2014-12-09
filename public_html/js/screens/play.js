@@ -1,11 +1,10 @@
-game.PlayScreen = me.ScreenObject.extend({
+    game.PlayScreen = me.ScreenObject.extend({
 	
 	onResetEvent: function() {
 		// reset the score
 		game.data.score = 0;
-                console.log("Play");
                 me.levelDirector.loadLevel("RogerLevel01");
-                //x,y where they mario resets
+                //x,y where the mario resets
                 this.resetPlayer(0, 400);
                 
                 
@@ -28,6 +27,7 @@ game.PlayScreen = me.ScreenObject.extend({
 		me.game.world.removeChild(this.HUD);
 	},
         
+        //reset's player function
         resetPlayer: function(x, y){
             var player = me.pool.pull("mario", 0, 400, {});
             me.game.world.addChild(player, 4);

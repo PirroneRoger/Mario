@@ -1,9 +1,11 @@
-game.TitleScreen = me.ScreenObject.extend({
+   game.TitleScreen = me.ScreenObject.extend({
 	/**	
 	 *  action to perform on state change
 	 */
-	onResetEvent: function() {	
+	onResetEvent: function() {
+                //calls upon the respective title image.
                 me.game.world.addChild( new me.Sprite (0, 0, me.loader.getImage('title-screen')), -10);
+                //makes if you press 'enter' the gamerr starts.
                 me.input.bindKey(me.input.KEY.ENTER, "start");
                 
                 me.game.world.addChild(new (me.Renderable.extend ({
@@ -35,6 +37,8 @@ game.TitleScreen = me.ScreenObject.extend({
 	/**	
 	 *  action to perform when leaving this screen (state change)
 	 */
+        
+        //thid code kills the 'press enter to play' button so it doesn't work ingame.
 	onDestroyEvent: function() {
 		me.input.unbindKey(me.input.KEY.ENTER);
 	}

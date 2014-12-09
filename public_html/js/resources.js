@@ -4,6 +4,9 @@ game.resources = [
 	 * @example
 	 * {name: "example", type:"image", src: "data/img/example.png"},
 	 */
+        
+        
+        //calls all of the png's we need for character's etc.
         {name: "background-tiles", type:"image", src: "data/img/background-tiles.png"},
         {name: "meta-tiles", type:"image", src: "data/img/meta-tiles.png"},
         {name: "mario", type:"image", src: "data/img/player1.png"},
@@ -20,6 +23,9 @@ game.resources = [
 	 * {name: "example01", type: "tmx", src: "data/map/example01.tmx"},
 	 * {name: "example01", type: "tmx", src: "data/map/example01.json"},
  	 */
+        
+        
+        //calls upon level's
 	 {name: "RogerLevel01", type: "tmx", src: "data/map/RogerLevel01.tmx"},
          {name: "RogerLevel02", type: "tmx", src: "data/map/RogerLevel02.tmx"},
 
