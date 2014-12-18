@@ -56,10 +56,8 @@
  <objectgroup name="EnemyEntities">
   <object name="BadGuy" x="282.666" y="488" width="342.667" height="74.6667"/>
   <object name="BadGuy" x="352" y="288" width="138.667" height="60"/>
-  <object name="BadGuy" x="164" y="429.333" width="69.3333" height="66.6667"/>
   <object name="BadGUy" x="916" y="490.667" width="125.333" height="66.6667"/>
   <object name="BadGuy" x="217.333" y="352" width="62.6667" height="66.6667"/>
-  <object name="BadGuy" x="148" y="418.667" width="65.3333" height="76"/>
   <object name="BadGuy" x="209.333" y="313.333" width="64" height="105.333"/>
   <object name="BadGuy" x="361.333" y="508" width="261.333" height="49.3333"/>
   <object name="BadGuy" x="282.667" y="493.333" width="334.667" height="62.6667"/>

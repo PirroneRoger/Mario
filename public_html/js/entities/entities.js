@@ -3,19 +3,19 @@
        //all of marios png info.
        this._super(me.Entity, 'init', [x, y, {
                image: "mario",
-               spritewidth: "128",
-               spriteheight: "128",
-               width: 128,
-               height: 128,
+               spritewidth: "64",
+               spriteheight: "64",
+               width: 64,
+               height: 64,
                getShape: function(){
-                   return (new me.Rect(0, 0, 30, 128)).toPolygon();
+                   return (new me.Rect(0, 0, 30, 64)).toPolygon();
                }
        }]);
    
        //calls upon each image to make animation work.
-       this.renderable.addAnimation("idle", [3]);
+       this.renderable.addAnimation("idle", [26]);
        this.renderable.addAnimation("bigIdle", [19]);
-       this.renderable.addAnimation("smallWalk", [8, 9, 10, 11, 12, 13], 80);
+       this.renderable.addAnimation("smallWalk", [91, 92, 93, 94, 95, 96], 80);
        this.renderable.addAnimation("bigWalk", [14, 15, 16, 17, 18, 19], 80);
        this.renderable.addAnimation("shrink", [0, 1, 2, 3], 80);
        this.renderable.addAnimation("grow", [4, 5, 6, 7], 80);
@@ -48,7 +48,7 @@
         if(!this.big)
             if(this.body.vel.x !== 0){
                 //uses small walk animation.
-                if(!this.renderable.isCurrentAnimation("smallWalk") && !this.renderable.isCurrentAnimation("grow") && !this.renderable.isCurrentAnimation("shrink")) {
+                if(!this.renderable.isCurrentAnimation("smallWalk") && !this.renderable.isCurrentAnimation() && !this.renderable.isCurrentAnimation("shrink")) {
                     this.renderable.setCurrentAnimation("smallWalk");
                     this.renderable.setAnimationFrame();
                 }
